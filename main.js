@@ -2,11 +2,13 @@ const number = document.querySelector('.number')
 const form = document.querySelector('#form-1')
 const listItem = document.querySelector('.list-item')
 const numberPlays = document.querySelector('.number-play')
+const numberRepeat = document.querySelector('.number-of-repeat')
+const numberRepeatNow = document.querySelector('.number-of-repeat-now')
+const numberSame = document.querySelector('.number-same')
+const numberNotSame = document.querySelector('.number-not-same')
 const dataAnalysis = document.querySelector('.data-analysis')
 const dataAnalysis20 = document.querySelector('.data-analysis20')
 const dataAnalysis30 = document.querySelector('.data-analysis30')
-const numberRepeat = document.querySelector('.number-of-repeat')
-const numberRepeatNow = document.querySelector('.number-of-repeat-now')
 
 
 let numbers = []
@@ -27,11 +29,22 @@ let presentNumber = -1
 let totalNumber = 0
 let largeOfNumberRepeat = 0
 let numberOfRepeat = 0
+let same = 0
+let notsame = 0
+let totalSame = 0
+let totalNotSame = 0
 
 var allNumber = document.createElement('span');
 var twentyNumberLast = document.createElement('span')
 var thirdtyNumberLast = document.createElement('span')
 
+const isSameNumber = (num1, num2) => {
+    if (num1 <= 49 && num2 <= 49)
+        return true
+    else if(num1 > 49 && num2 > 49){
+        return true
+    }else return false
+}
 
 form.onsubmit = (e) => {
     e.preventDefault()
@@ -45,25 +58,12 @@ form.onsubmit = (e) => {
         probalityNumber[number.value]++
         allNumbers.push(number.value)
         if (allNumbers.length > 12){
-
-            if (allNumbers[allNumbers.length -1] > 49){
-                temp1 = 1
-            }else{
-                temp1 = 0
-            }
-            if (allNumbers[allNumbers.length - 11] > 49){
-                temp2 = 1
-            }else{
-                temp2 = 0
-            }
-
-            if (temp1 != temp2){
+            if (!isSameNumber(allNumbers[allNumbers.length -1], allNumbers[allNumbers.length - 11])){
                 numberOfRepeat++
                 numberRepeatNow.textContent = numberOfRepeat
             }else{
                 numberOfRepeat = 0
                 numberRepeatNow.textContent = numberOfRepeat
-
             }
     
             if (numberOfRepeat > largeOfNumberRepeat){
@@ -82,10 +82,27 @@ form.onsubmit = (e) => {
             listItem.textContent = ''
             numberPlays.textContent = ''
             numbersNeedPlay = []
-            if (numbers[preventNumber].length == 3){
-                const numberDelete = numbers[preventNumber].shift()
-            }
+
             numbers[preventNumber].push(number.value)
+            if (numbers[preventNumber][numbers[preventNumber].length > 1]){
+                if (isSameNumber(numbers[preventNumber][numbers[preventNumber].length - 1], numbers[preventNumber][numbers[preventNumber].length - 2])){
+                    same++
+                    if(same > totalSame){
+                        totalSame = same
+                        same = 0
+                    }
+                    numberSame.textContent = totalSame
+                }
+                else{
+                    notsame++
+                    if (notsame > totalNotSame){
+                        totalNotSame = notsame
+                        notsame = 0
+                    }
+                    numberNotSame.textContent = totalNotSame
+                }
+            }
+
             presentNumber = preventNumber
             preventNumber = number.value
     
@@ -100,10 +117,8 @@ form.onsubmit = (e) => {
                     item.classList.add('isLastNumber');
                 
                 let temp = 0
-                if (numbers[i].length == 3){
-                    temp = 2
-                }else if (numbers[i].length == 2){
-                    temp = 1
+                if(numbers[i].length > 0){
+                    temp = numbers[i].length - 1
                 }
 
                 if (preventNumber === numbers[i][temp] && i != presentNumber)
@@ -115,14 +130,15 @@ form.onsubmit = (e) => {
                 numberPlays.textContent = numbersNeedPlay.join('|')
 
                 probalityOfANummbers[i] = (probalityNumber[i]/totalNumber*100).toFixed(2)
-    
-                item.innerHTML = `${i < 10 ? '0' : ''}${i}: ${probalityNumber[i]}| ${numbers[i][0] != undefined ? numbers[i][0] : ''} ${numbers[i][1] != undefined ? numbers[i][1] : ''} ${numbers[i][2] != undefined ? numbers[i][2] : ''}`
+                let listNumber = numbers[i].join(' ')
+                item.innerHTML = `${i < 10 ? '0' : ''}${i}: ${probalityNumber[i]}| ${listNumber}`
                 listItem.appendChild(item)
             }
-            
+
             dataAnalysis.appendChild(allNumber)
             dataAnalysis20.appendChild(twentyNumberLast)
             dataAnalysis30.appendChild(thirdtyNumberLast)
+            
         }
     
         number.value = null
