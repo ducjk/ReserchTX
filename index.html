@@ -1,108 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Research</title>
-    <style>
-        .wrap {
-            display: flex;
-            justify-content: left;
-            margin: 0 10px;
-        }
-        .item{
-            padding: 5px 4px;
-            background-color: rgba(0, 0, 0, 0.08);
-            border-radius: 6px;
-            font-size: 18px;
-            margin: 3px 2px;
-            min-width: 143px;
-            color: red;
-            font-weight: 600;
-        }
-        .data {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .list-item{
-            display: flex;
-            justify-content: left;
-            flex-wrap: wrap;
-            list-style: none;
-            padding: 0 8px;
-        }
-        .number-play {
-            font-weight: 600;
-            font-size: 20px;
-        }
-        #form-1{
-            margin-right: 20px;
-        }
-        .isLastNumber{
-            background-color: rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-        .isNumberPlay{
-            background-color: blue;
-            color: white;
-        }
-        .isSameNumber {
-            color: black;
-        }
-        .isPresentNumber{
-            background-color: rgba(0, 0, 0, 0.12);
-            color: blue;
-        }
-        .number {
-            margin: 0 20px;
-            
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body>
+    <form id="form-2">
+      <label class="">Nhap danh sach so o day: </label>
+      <input name="list-number" class="list-number" type="text"/>
+    </form>
+    <div class="wrap-title">
+      <label for="">Nhap ma so vao day: </label>
+      <input type="number" class="input-datetime" />
+      <button class="hidden-input">An o nhap</button>
+    </div>
     <div class="wrap">
-        <form id="form-1">
-            <label>Nhap so tai day</label>
-            <input name="number" class="number" type="number" min="0" max="99"/>
-        </form>
-        <span class="number">So can danh: 
-            <span class="number-play"></span>
-        </span>
-        <span class="number">So lan lap lai lon nhat: 
-            <span class="number-of-repeat">
-
-            </span>
-        </span>
-        <span class="number">So lan lap lai: 
-            <span class="number-of-repeat-now">
-
-            </span>
-        </span>
-        <span class="number">So trung nhieu nhat: 
-            <span class="number-same"></span>
-        </span>
-        <span class="number">So khong trung nhieu nhat:
-            <span class="number-not-same"></span>
-        </span>
+      <form id="form-1">
+        <label class="title-number"></label>
+        <input name="number" class="number" type="number" min="0" max="99" />
+      </form>
+      <span class="number"
+        >So can danh:
+        <span class="number-play"></span>
+      </span>
+      <span class="number"
+        >So lan lap lai lon nhat:
+        <span class="number-of-repeat"> </span>
+      </span>
+      <span class="number"
+        >So lan lap lai:
+        <span class="number-of-repeat-now"> </span>
+      </span>
     </div>
-    <ul class="list-item">
-    </ul>
+    <ul class="list-item"></ul>
 
     <div class="data">
-        <span>Cac so da ra trong 10 lan gan nhat: </span>
-        <span class="data-analysis"></span>
+      <span>Cac so da ra trong 10 lan gan nhat: </span>
+      <span class="data-analysis"></span>
     </div>
     <div class="data">
-        <span>Cac so da ra trong 20 lan gan nhat: </span>
-        <span class="data-analysis20"></span>
+      <span>Cac so da ra trong 20 lan gan nhat: </span>
+      <span class="data-analysis20"></span>
     </div>
     <div class="data">
-        <span>Cac so da ra trong 30 lan gan nhat: </span>
-        <span class="data-analysis30"></span>
+      <span>Cac so da ra trong 30 lan gan nhat: </span>
+      <span class="data-analysis30"></span>
     </div>
 
-    
-</body>
-<script src="./main.js">
-</script>
+    <div class="analysis data">
+      <span>Danh sach cac so da trung nhau: </span><br />
+      <ul class="same-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so hon 1: </span>
+      <br />
+      <ul class="than-one-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so hon 2: </span>
+      <br />
+      <ul class="than-two-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so hon 10: </span>
+      <br />
+      <ul class="than-ten-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so thua 1: </span>
+      <br />
+      <ul class="less-one-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so thua 2: </span>
+      <br />
+      <ul class="less-two-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so thua 10: </span>
+      <br />
+      <ul class="less-ten-number"></ul>
+    </div>
+
+    <div class="data">Danh sach nhung so tien da ra:
+      <ul class="total-money"></ul>
+    </div>
+  </body>
+  <script src="./main.js"></script>
 </html>

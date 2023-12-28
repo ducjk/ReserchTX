@@ -1,0 +1,60 @@
+.hidden {
+  display: none;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.wrap {
+  display: flex;
+  justify-content: left;
+  margin: 10px;
+}
+.item {
+  padding: 5px 4px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  font-size: 18px;
+  margin: 3px 8px;
+  min-width: 143px;
+  color: red;
+  font-weight: 600;
+}
+.data {
+  font-size: 18px;
+  font-weight: bold;
+}
+.list-item {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 8px;
+}
+.number-play {
+  font-weight: 600;
+  font-size: 20px;
+}
+#form-1 {
+  margin-right: 20px;
+}
+.isLastNumber {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+.isNumberPlay {
+  background-color: blue;
+  color: white;
+}
+.isSameNumber {
+  color: black;
+}
+.isPresentNumber {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: blue;
+}
+.number {
+  margin: 0 20px;
+}
