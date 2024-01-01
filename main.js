@@ -12,6 +12,7 @@ const titleNumber = document.querySelector(".title-number");
 const hiddenInput = document.querySelector(".hidden-input");
 const wrapTitle = document.querySelector(".wrap-title");
 const totalMoneyEl = document.querySelector('.total-money')
+const listNumberCorrect = document.querySelector('.list-index-number-correct')
 
 const sameNumberEl = document.querySelector(".same-number");
 const thanOneNumberEl = document.querySelector(".than-one-number");
@@ -29,6 +30,7 @@ let numberTime = 0;
 
 let numbers = [];
 let numbersNeedPlay = [];
+let listOfIndexNumberCorrect = []
 let probalityNumber = [];
 let probalityOfANummbers = [];
 let allNumbers = [];
@@ -46,6 +48,7 @@ let listOfThanTenNumber = [];
 for (let i = 0; i < 100; i++) {
   numbers[i] = new Array();
   probalityNumber[i] = 0;
+  listOfIndexNumberCorrect[i] = 0
 }
 
 let preventNumber = -1;
@@ -267,10 +270,18 @@ form.onsubmit = (e) => {
           number: number.value,
         });
       }
+      listNumberCorrect.innerHTML = 'Danh sach index: '
 
       numbersNeedPlay = [];
 
       numbers[preventNumber].push(number.value);
+
+      for (let i = 0; i < numbers[preventNumber].length - 1; i++){
+        if (numbers[preventNumber][i] == numbers[preventNumber][numbers[preventNumber].length - 1]){
+          listOfIndexNumberCorrect[ (numbers[preventNumber].length - 1) - i ]++
+          listNumberCorrect.innerHTML += `${(numbers[preventNumber].length - 1) - i} |`
+        }
+      }
 
       presentNumber = preventNumber;
       preventNumber = number.value;
