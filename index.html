@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="./main.css">
   </head>
   <body>
-    <form id="form-2">
+    <button class="add-list-number" style="margin: 10px 0;">Lay data tu localstore</button>
+    <form id="form-2" style="margin: 10px 0;">
       <label class="">Nhap danh sach so o day: </label>
       <input name="list-number" class="list-number" type="text"/>
     </form>
+
     <div class="wrap-title">
       <label for="">Nhap ma so vao day: </label>
       <input type="number" class="input-datetime" />
@@ -36,6 +38,8 @@
     </div>
 
     <div class="list-index-number-correct"></div>
+    <div class="list-number-lien-tiep"></div>
+    <div class="number-lien-tiep"></div>
 
     <ul class="list-item"></ul>
 
@@ -85,6 +89,23 @@
       <span>Danh sach cac so thua 10: </span>
       <br />
       <ul class="less-ten-number"></ul>
+    </div>
+    <div class="analysis data">
+      <span>Danh sach cac so trung voi so nghich dao: </span>
+      <br />
+      <ul class="reverse-number"></ul>
+    </div>
+
+    <div class="data">
+      Danh sách số trùng cap so:
+
+      <ul class="list-same-data"></ul>
+    </div>
+
+    <div class="data">
+      Danh sách số trùng với số đuôi:
+
+      <ul class="list-tag-data"></ul>
     </div>
 
     <div class="data">Danh sach nhung so tien da ra:
